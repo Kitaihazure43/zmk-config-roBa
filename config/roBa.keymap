@@ -46,6 +46,16 @@
             key-positions = <6 7>;
             layers = <0>;
         };
+
+        boot1 {
+            bindings = <&bootloader>;
+            key-positions = <34 39>;
+        };
+
+        boot2 {
+            bindings = <&bootloader>;
+            key-positions = <42 40>;
+        };
     };
 
     macros {
