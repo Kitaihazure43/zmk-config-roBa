@@ -72,7 +72,7 @@
             compatible = "zmk,behavior-tap-dance";
             label = "RCTL";
             #binding-cells = <0>;
-            bindings = <&mo 5>, <&kp RCTRL>;
+            bindings = <&mo 7>, <&kp RCTRL>;
         };
     };
 
@@ -84,7 +84,7 @@
 &kp Q      &kp J         &kp U         &kp COMMA                    &kp PERIOD                                                              &kp F                  &kp W  &kp R  &kp Y  &kp P
 &kp E      &kp I         &kp A         &kp O                        &kp MINUS             &kp LS(LG(S))                      &kp MINUS      &kp K                  &kp T  &kp N  &kp S  &kp H
 &kp X      &kp L         &kp C         &kp V                        &kp SLASH             &kp COLON                          &kp SEMICOLON  &kp G                  &kp D  &kp M  &kp Z  &kp SLASH
-&kp LCTRL  &kp LEFT_WIN  &kp LEFT_ALT  &lt_to_layer_0 5 INT_HENKAN  &mt LEFT_SHIFT ENTER  &lt_to_layer_0 6 INT_MUHENKAN      &none          &mt RIGHT_SHIFT SPACE                       &none
+&kp LCTRL  &kp LEFT_WIN  &kp LEFT_ALT  &lt_to_layer_0 5 INT_HENKAN  &mt LEFT_SHIFT ENTER  &lt_to_layer_0 6 INT_MUHENKAN      &Rctl          &mt RIGHT_SHIFT SPACE                       &none
             >;
 
             sensor-bindings = <&inc_dec_kp PG_UP PAGE_DOWN>;
@@ -143,6 +143,24 @@
 &trans         &trans          &trans  &mo 1   &trans  &trans      &trans  &kp TILDE  &kp AT_SIGN      &kp COLON      &kp NON_US_BACKSLASH  &trans
 &trans         &trans          &trans  &trans  &trans  &trans      &trans  &trans     &kp AMPERSAND    &kp SEMICOLON  &kp UNDERSCORE        &trans
 &kp LS(LG(G))  &kp LG(PERIOD)  &trans  &trans  &trans  &trans      &trans  &kp SPACE                                                        &trans
+            >;
+        };
+
+        layer_7 {
+            bindings = <
+&kp LS(PLUS)  &kp N1  &kp N2  &kp N3  &kp COMMA                          &trans  &trans          &kp UP_ARROW  &trans     &trans
+&kp LS(STAR)  &kp N4  &kp N5  &kp N6  &kp MINUS      &trans      &trans  &trans  &kp LEFT_ARROW  &kp DOWN      &kp RIGHT  &trans
+&kp FSLH      &kp N7  &kp N8  &kp N9  &kp LS(EQUAL)  &trans      &trans  &trans  &trans          &trans        &trans     &trans
+&trans        &trans  &trans  &trans  &kp N0         &trans      &trans  &trans                                           &trans
+            >;
+        };
+
+        layer_8 {
+            bindings = <
+&trans  &trans  &trans  &trans  &trans                      &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans      &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans      &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans      &trans  &trans                          &trans
             >;
         };
     };
