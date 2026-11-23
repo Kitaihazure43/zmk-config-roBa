@@ -42,20 +42,10 @@
             layers = <0>;
         };
 
-        muhennkann {
-            bindings = <&to_layer_0 INT_MUHENKAN>;
+        henkan {
+            bindings = <&kp LANG_ZENKAKUHANKAKU>;
             key-positions = <6 7>;
             layers = <0>;
-        };
-
-        boot1 {
-            bindings = <&bootloader>;
-            key-positions = <34 39>;
-        };
-
-        boot2 {
-            bindings = <&bootloader>;
-            key-positions = <42 40>;
         };
     };
 
@@ -140,10 +130,10 @@
 
         MOUSE {
             bindings = <
-&trans  &trans  &trans  &trans  &trans                      &trans  &trans  &trans    &trans    &trans
-&trans  &trans  &trans  &trans  &trans  &trans      &trans  &trans  &none   &mkp MB1  &mkp MB3  &mkp MB2
-&trans  &trans  &trans  &trans  &trans  &trans      &trans  &trans  &trans  &trans    &trans    &trans
-&trans  &trans  &trans  &trans  &trans  &trans      &trans  &trans                              &trans
+&trans  &trans  &trans  &kp LC(C)  &kp LC(X)                      &trans  &trans    &trans    &trans    &trans
+&trans  &trans  &trans  &kp LC(P)  &trans     &trans      &trans  &trans  &mkp MB1  &mkp MB3  &mkp MB2  &none
+&trans  &trans  &trans  &trans     &trans     &trans      &trans  &trans  &trans    &trans    &trans    &trans
+&trans  &trans  &trans  &trans     &trans     &trans      &trans  &trans                                &trans
             >;
         };
 
