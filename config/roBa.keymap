@@ -43,7 +43,7 @@
         };
 
         henkan {
-            bindings = <&kp LANG_ZENKAKUHANKAKU>;
+            bindings = <&kp LA(GRAVE)>;
             key-positions = <6 7>;
             layers = <0>;
         };
