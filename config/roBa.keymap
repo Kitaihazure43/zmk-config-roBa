@@ -47,6 +47,11 @@
             key-positions = <6 7>;
             layers = <0>;
         };
+
+        iko-ru {
+            bindings = <&kp EQUAL>;
+            key-positions = <41 18>;
+        };
     };
 
     macros {
@@ -92,10 +97,10 @@
 
         FUNCTION {
             bindings = <
-&trans  &trans  &trans  &trans  &trans                       &kp F1  &kp F2  &kp F3  &kp F4  &kp F5
-&trans  &trans  &trans  &trans  &trans  &trans      &kp F13  &kp F6  &kp F7  &kp F8  &kp F9  &kp F10
-&trans  &trans  &trans  &trans  &trans  &trans      &trans   &trans  &trans  &trans  &trans  &kp F11
-&trans  &trans  &trans  &trans  &trans  &trans      &trans   &trans                          &kp F12
+&none  &none  &none  &none  &none                    &none  &kp F1  &kp F2  &kp F3  &kp F10
+&none  &none  &none  &none  &none  &none      &none  &none  &kp F4  &kp F5  &kp F6  &kp F11
+&none  &none  &none  &none  &none  &none      &none  &none  &kp F7  &kp F8  &kp F9  &kp F12
+&none  &none  &none  &none  &none  &none      &none  &none                          &none
             >;
         };
 
@@ -121,10 +126,10 @@
 
         MOUSE {
             bindings = <
-&trans  &trans  &trans  &kp LC(C)  &kp LC(X)                      &trans  &trans    &trans    &trans    &trans
-&trans  &trans  &trans  &kp LC(P)  &trans     &trans      &trans  &trans  &mkp MB1  &mkp MB3  &mkp MB2  &none
-&trans  &trans  &trans  &trans     &trans     &trans      &trans  &trans  &trans    &trans    &trans    &trans
-&trans  &trans  &trans  &trans     &trans     &trans      &trans  &trans                                &trans
+&none  &none  &kp LC(F)  &kp LC(C)  &kp LC(X)                    &none  &none     &none     &none     &none
+&none  &none  &kp LC(A)  &kp LC(V)  &none      &none      &none  &none  &mkp MB1  &mkp MB3  &mkp MB2  &to 0
+&none  &none  &none      &none      &none      &none      &none  &none  &none     &none     &none     &none
+&none  &none  &none      &none      &none      &none      &none  &none                                &none
             >;
         };
 
@@ -139,9 +144,9 @@
 
         kigou {
             bindings = <
-&trans         &kp LS(LG(S))   &trans  &trans  &trans                      &kp CARET  &kp EXCLAMATION  &kp HASH       &kp QUESTION          &trans
-&trans         &trans          &trans  &mo 1   &trans  &trans      &trans  &kp TILDE  &kp AT_SIGN      &kp COLON      &kp NON_US_BACKSLASH  &trans
-&trans         &trans          &trans  &trans  &trans  &trans      &trans  &trans     &kp AMPERSAND    &kp SEMICOLON  &kp UNDERSCORE        &trans
+&trans         &kp LS(LG(S))   &trans  &trans  &trans                      &kp EQUAL  &kp EXCLAMATION  &kp HASH       &kp QUESTION          &trans
+&trans         &trans          &mo 9   &mo 1   &trans  &trans      &trans  &kp TILDE  &kp LBKT         &kp SQT        &kp NON_US_BACKSLASH  &trans
+&trans         &trans          &trans  &trans  &trans  &trans      &trans  &trans     &kp AMPERSAND    &kp SEMICOLON  &kp LS(INT1)          &trans
 &kp LS(LG(G))  &kp LG(PERIOD)  &trans  &trans  &trans  &trans      &trans  &kp SPACE                                                        &trans
             >;
         };
@@ -155,12 +160,21 @@
             >;
         };
 
-        layer_8 {
+        NUM-2 {
             bindings = <
-&trans  &trans  &trans  &trans  &trans                      &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans      &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans      &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans      &trans  &trans                          &trans
+&none  &none  &none  &none  &none                    &none      &kp N1  &kp N2  &kp N3  &kp LS(SEMI)
+&none  &none  &none  &none  &none  &none      &none  &kp MINUS  &kp N4  &kp N5  &kp N6  &kp LS(SQT)
+&none  &none  &none  &none  &none  &none      &none  &none      &kp N7  &kp N8  &kp N9  &kp FSLH
+&none  &none  &none  &none  &none  &none      &none  &kp N0                             &none
+            >;
+        };
+
+        kakko {
+            bindings = <
+&none  &none  &none  &none  &none                    &none  &kp LS(LPAR)  &kp LS(N7)    &kp LS(RPAR)  &none
+&none  &none  &none  &none  &none  &none      &none  &none  &kp RBKT      &kp LS(N2)    &kp BSLH      &none
+&none  &none  &none  &none  &none  &none      &none  &none  &kp LS(RBKT)  &kp LS(LBKT)  &kp LS(BSLH)  &none
+&none  &none  &none  &none  &none  &none      &none  &none                                            &none
             >;
         };
     };
