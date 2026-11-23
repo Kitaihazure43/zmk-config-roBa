@@ -49,7 +49,7 @@
         };
 
         iko-ru {
-            bindings = <&kp EQUAL>;
+            bindings = <&kp LS(MINUS)>;
             key-positions = <41 18>;
         };
     };
@@ -60,6 +60,13 @@
             #binding-cells = <1>;
             bindings = <&to 0 &macro_param_1to1 &kp MACRO_PLACEHOLDER>;
             label = "TO_LAYER_0";
+        };
+
+        p: password {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&none &kp N1 &kp Q &kp A &kp Z &kp N2 &kp W &kp S &kp X &kp LS(MINUS) &kp LS(LBKT) &kp LS(SQT) &kp LS(INT1)>;
+            label = "PASSWORD";
         };
     };
 
@@ -86,10 +93,10 @@
 
         default_layer {
             bindings = <
-&kp Q      &kp J         &kp U         &kp COMMA                    &kp PERIOD                                                              &kp F                  &kp W  &kp R  &kp Y  &kp P
-&kp E      &kp I         &kp A         &kp O                        &kp MINUS             &kp LS(LG(S))                      &kp MINUS      &kp K                  &kp T  &kp N  &kp S  &kp H
-&kp X      &kp L         &kp C         &kp V                        &kp SLASH             &kp COLON                          &kp SEMICOLON  &kp G                  &kp D  &kp M  &kp Z  &kp SLASH
-&kp LCTRL  &kp LEFT_WIN  &kp LEFT_ALT  &lt_to_layer_0 5 INT_HENKAN  &mt LEFT_SHIFT ENTER  &lt_to_layer_0 6 INT_MUHENKAN      &Rctl          &mt RIGHT_SHIFT SPACE                       &none
+&kp Q    &kp J         &kp U         &kp COMMA                    &kp PERIOD                                                            &kp F                  &kp W  &kp R  &kp Y  &kp P
+&kp E    &kp I         &kp A         &kp O                        &kp MINUS             &kp LS(LG(S))                    &p             &kp K                  &kp T  &kp N  &kp S  &kp H
+&kp X    &kp L         &kp C         &kp V                        &kp SLASH             &kp COLON                        &kp SEMICOLON  &kp G                  &kp D  &kp M  &kp Z  &kp B
+&kp ESC  &kp LEFT_WIN  &kp LEFT_ALT  &lt_to_layer_0 5 INT_HENKAN  &mt LEFT_SHIFT ENTER  &lt_to_layer_0 6 LEFT_SHIFT      &Rctl          &mt RIGHT_SHIFT SPACE                       &none
             >;
 
             sensor-bindings = <&inc_dec_kp PG_UP PAGE_DOWN>;
@@ -128,8 +135,8 @@
             bindings = <
 &none  &none  &kp LC(F)  &kp LC(C)  &kp LC(X)                    &none  &none     &none     &none     &none
 &none  &none  &kp LC(A)  &kp LC(V)  &none      &none      &none  &none  &mkp MB1  &mkp MB3  &mkp MB2  &to 0
-&none  &none  &none      &none      &none      &none      &none  &none  &none     &none     &none     &none
-&none  &none  &none      &none      &none      &none      &none  &none                                &none
+&none  &none  &none      &kp LC(X)  &none      &none      &none  &none  &none     &none     &none     &none
+&none  &none  &none      &to 0      &to 0      &to 0      &mo 7  &to 0                                &none
             >;
         };
 
