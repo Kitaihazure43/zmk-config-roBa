@@ -76,6 +76,13 @@
             #binding-cells = <2>;
             tapping-term-ms = <200>;
         };
+
+        Rctl: Rctl {
+            compatible = "zmk,behavior-tap-dance";
+            label = "RCTL";
+            #binding-cells = <0>;
+            bindings = <&mo 6>, <&kp RCTRL>;
+        };
     };
 
     keymap {
@@ -83,13 +90,22 @@
 
         default_layer {
             bindings = <
-&kp Q      &kp J         &kp U         &kp COMMA                    &kp PERIOD                                                     &kp F        &kp W  &kp R  &kp Y  &kp P
-&kp E      &kp I         &kp A         &kp O                        &kp MINUS    &kp LS(LG(S))                      &kp MINUS      &kp K        &kp T  &kp N  &kp S  &kp H
-&kp X      &kp L         &kp C         &kp V                        &kp SLASH    &kp COLON                          &kp SEMICOLON  &kp G        &kp D  &kp M  &kp Z  &kp SLASH
-&kp LCTRL  &kp LEFT_WIN  &kp LEFT_ALT  &lt_to_layer_0 6 INT_HENKAN  &lt 2 SPACE  &lt_to_layer_0 3 INT_MUHENKAN      &kp BACKSPACE  &lt 1 ENTER                       &kp DEL
+&kp Q      &kp J         &kp U         &kp COMMA                    &kp PERIOD                                                              &kp F                  &kp W  &kp R  &kp Y  &kp P
+&kp E      &kp I         &kp A         &kp O                        &kp MINUS             &kp LS(LG(S))                      &kp MINUS      &kp K                  &kp T  &kp N  &kp S  &kp H
+&kp X      &kp L         &kp C         &kp V                        &kp SLASH             &kp COLON                          &kp SEMICOLON  &kp G                  &kp D  &kp M  &kp Z  &kp SLASH
+&kp LCTRL  &kp LEFT_WIN  &kp LEFT_ALT  &lt_to_layer_0 6 INT_HENKAN  &mt LEFT_SHIFT ENTER  &lt_to_layer_0 1 INT_MUHENKAN      &none          &mt RIGHT_SHIFT SPACE                       &none
             >;
 
             sensor-bindings = <&inc_dec_kp PG_UP PAGE_DOWN>;
+        };
+
+        kigou {
+            bindings = <
+&trans         &kp LS(LG(S))   &trans  &trans  &trans                      &kp CARET  &kp EXCLAMATION  &kp HASH       &kp QUESTION          &trans
+&trans         &trans          &trans  &mo 2   &trans  &trans      &trans  &kp TILDE  &kp AT_SIGN      &kp COLON      &kp NON_US_BACKSLASH  &trans
+&trans         &trans          &trans  &trans  &trans  &trans      &trans  &trans     &kp AMPERSAND    &kp SEMICOLON  &kp UNDERSCORE        &trans
+&kp LS(LG(G))  &kp LG(PERIOD)  &trans  &trans  &trans  &trans      &trans  &kp SPACE                                                        &trans
+            >;
         };
 
         FUNCTION {
@@ -123,19 +139,10 @@
 
         MOUSE {
             bindings = <
-&trans  &trans  &trans  &trans  &trans                      &trans  &trans    &trans    &trans    &trans
-&trans  &trans  &trans  &trans  &trans  &trans      &trans  &trans  &mkp MB1  &mkp MB3  &mkp MB2  &trans
-&trans  &trans  &trans  &trans  &trans  &trans      &trans  &trans  &trans    &trans    &trans    &trans
-&trans  &trans  &trans  &trans  &trans  &trans      &trans  &trans                                &trans
-            >;
-        };
-
-        SCROLL {
-            bindings = <
-&trans  &trans  &trans  &trans  &trans                      &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans      &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans      &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans      &trans  &trans                          &trans
+&trans  &trans  &trans  &trans  &trans                      &trans  &trans  &trans    &trans    &trans
+&trans  &trans  &trans  &trans  &trans  &trans      &trans  &trans  &none   &mkp MB1  &mkp MB3  &mkp MB2
+&trans  &trans  &trans  &trans  &trans  &trans      &trans  &trans  &trans  &trans    &trans    &trans
+&trans  &trans  &trans  &trans  &trans  &trans      &trans  &trans                              &trans
             >;
         };
 
