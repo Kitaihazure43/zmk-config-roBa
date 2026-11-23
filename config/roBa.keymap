@@ -144,9 +144,9 @@
 
         kigou {
             bindings = <
-&trans         &kp LS(LG(S))   &trans  &trans  &trans                      &kp EQUAL  &kp EXCLAMATION  &kp HASH       &kp QUESTION          &trans
-&trans         &trans          &mo 9   &mo 1   &trans  &trans      &trans  &kp TILDE  &kp LBKT         &kp SQT        &kp NON_US_BACKSLASH  &trans
-&trans         &trans          &trans  &trans  &trans  &trans      &trans  &trans     &kp AMPERSAND    &kp SEMICOLON  &kp LS(INT1)          &trans
+&trans         &kp LS(LG(S))   &mo 9   &trans  &trans                      &kp EQUAL  &kp EXCLAMATION  &kp HASH       &kp QUESTION          &trans
+&trans         &trans          &mo 9   &mo 8   &trans  &trans      &trans  &kp TILDE  &kp LBKT         &kp SQT        &kp NON_US_BACKSLASH  &trans
+&trans         &trans          &trans  &mo 1   &trans  &trans      &trans  &trans     &kp AMPERSAND    &kp SEMICOLON  &kp LS(INT1)          &trans
 &kp LS(LG(G))  &kp LG(PERIOD)  &trans  &trans  &trans  &trans      &trans  &kp SPACE                                                        &trans
             >;
         };
