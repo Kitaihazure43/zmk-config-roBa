@@ -1,4 +1,4 @@
-layout: {zmk_keyboard: roBa}
+layout: {qmk_info_json: keymap-drawer/roBa-layout.json}
 layers:
   default:
   - Q
@@ -139,7 +139,7 @@ layers:
   - ''
   - Ctl+F
   - Ctl+V
-  - Ctl+X
+  - Ctl+C
   - ''
   - ''
   - ''
@@ -148,7 +148,7 @@ layers:
   - ''
   - ''
   - Ctl+A
-  - Ctl+C
+  - Ctl+X
   - ''
   - '&screenshot'
   - ''
@@ -160,7 +160,7 @@ layers:
   - ''
   - ''
   - ''
-  - Ctl+X
+  - Ctl+C
   - ''
   - ''
   - ''
