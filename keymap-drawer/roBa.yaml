@@ -320,7 +320,7 @@ layers:
   - KP 1
   - KP 2
   - KP 3
-  - KP DIVIDE
+  - KP PLUS
   - ''
   - ''
   - ''
@@ -344,7 +344,7 @@ layers:
   - KP 7
   - KP 8
   - KP 9
-  - KP PLUS
+  - KP DIVIDE
   - ''
   - ''
   - ''
