@@ -138,7 +138,7 @@ layers:
   - ''
   - ''
   - Ctl+F
-  - Ctl+C
+  - Ctl+V
   - Ctl+X
   - ''
   - ''
@@ -148,13 +148,13 @@ layers:
   - ''
   - ''
   - Ctl+A
-  - Ctl+V
+  - Ctl+C
   - ''
   - '&screenshot'
   - ''
   - '&mkp MB4'
   - '&mkp LCLK'
-  - {t: '&mkp MCLK', h: win_snap}
+  - '&mkp MCLK'
   - '&mkp RCLK'
   - {t: default, h: toggle}
   - ''
@@ -398,50 +398,6 @@ layers:
   - ''
   - ''
   - ''
-  win_snap:
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {type: held}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
 combos:
 - p: [18, 19]
   k: BACKSPACE

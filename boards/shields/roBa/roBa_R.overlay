@@ -1,5 +1,4 @@
 #include "roBa.dtsi"
-#include <dt-bindings/zmk/keys.h>
 
 &default_transform {
     col-offset = <6>;
@@ -58,18 +57,5 @@
         reg = <0>;
         spi-max-frequency = <2000000>;
         irq-gpios = <&gpio0 2 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>;
-
-        /* Layer 10 is win_snap. +X right, -X left, -Y up, +Y down. */
-        win_snap_ball {
-            layers = <10>;
-            bindings =
-                <&kp LG(RIGHT_ARROW)>,
-                <&kp LG(LEFT_ARROW)>,
-                <&kp LG(UP_ARROW)>,
-                <&kp LG(DOWN_ARROW)>;
-            tick = <24>;
-            tap-ms = <40>;
-            wait-ms = <0>;
-        };
     };
 };
