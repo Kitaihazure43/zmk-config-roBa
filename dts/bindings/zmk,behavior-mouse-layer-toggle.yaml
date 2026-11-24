@@ -1,0 +1,22 @@
+# Copyright (c) 2026 The roBa contributors
+# SPDX-License-Identifier: MIT
+
+description: |
+  Toggle the trackball mouse layer.
+  Off turns the layer on and keeps it until this key is pressed again.
+  If the layer was opened by the trackball, the first press locks it
+  instead of leaving, and the next press leaves.
+
+compatible: "zmk,behavior-mouse-layer-toggle"
+
+properties:
+  label:
+    type: string
+    required: false
+  "#binding-cells":
+    type: int
+    required: true
+    const: 1
+
+binding-cells:
+  - param1
