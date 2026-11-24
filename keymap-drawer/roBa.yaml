@@ -320,19 +320,19 @@ layers:
   - KP 1
   - KP 2
   - KP 3
-  - ''''
+  - KP DIVIDE
   - ''
   - ''
   - ''
   - {type: held}
   - ''
   - ''
-  - ''
+  - KP NUM
   - '-'
   - KP 4
   - KP 5
   - KP 6
-  - Sft+2
+  - KP MULTIPLY
   - ''
   - ''
   - ''
@@ -344,7 +344,7 @@ layers:
   - KP 7
   - KP 8
   - KP 9
-  - /
+  - KP PLUS
   - ''
   - ''
   - ''
