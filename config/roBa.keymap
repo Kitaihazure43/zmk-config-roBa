@@ -6,8 +6,7 @@
 
 /* Layers:
  * 0 default, 1 FUNCTION, 2 NUM, 3 ARROW, 4 MOUSE,
- * 5 scroll/BT (hold the 変換 thumb), 6 kigou, 7 layer_7, 8 NUM-2, 9 kakko,
- * 10 win_snap (middle-button hold).
+ * 5 scroll/BT (hold the 変換 thumb), 6 kigou, 7 layer_7, 8 NUM-2, 9 kakko.
  *
  * Symbol keys use keys_ja.h so a JIS OS layout produces the named character.
  * Number keys on symbol/num layers are keypad codes (KP_N0..KP_N9).
@@ -105,16 +104,6 @@
             bindings = <&mo 7>, <&kp RCTRL>;
         };
 
-        /* Tap: middle click. Hold: win_snap, then move the ball to snap the window. */
-        mclk_snap: mclk_snap {
-            compatible = "zmk,behavior-hold-tap";
-            label = "MCLK_SNAP";
-            #binding-cells = <2>;
-            flavor = "tap-preferred";
-            tapping-term-ms = <250>;
-            quick-tap-ms = <0>;
-            bindings = <&mo>, <&mkp>;
-        };
     };
 
     keymap {
@@ -164,15 +153,16 @@
             sensor-bindings = <&inc_dec_kp LC(PAGE_UP) LC(PAGE_DOWN)>;
         };
 
-        /* Right home row: back, left click, middle (hold = window snap), right click.
+        /* Right home row: back, left click, middle click (held while the key is down), right click.
+         * Copy and paste are swapped: the comma key is paste, the O key is copy.
          * Double-click is directly under left click.
          * Hold the 変換 thumb to scroll. Enter is the enter thumb.
          * The right-edge key toggles this layer.
          */
         MOUSE {
             bindings = <
-&none  &none  &kp LC(F)  &kp LC(C)  &kp LC(X)                         &none      &none      &none              &none     &none
-&none  &none  &kp LC(A)  &kp LC(V)  &none           &screenshot       &none      &mkp MB4   &mkp LCLK          &mclk_snap 10 MCLK  &mkp RCLK  &to 0
+&none  &none  &kp LC(F)  &kp LC(V)  &kp LC(X)                         &none      &none      &none              &none     &none
+&none  &none  &kp LC(A)  &kp LC(C)  &none           &screenshot       &none      &mkp MB4   &mkp LCLK          &mkp MCLK  &mkp RCLK  &to 0
 &none  &none  &none      &kp LC(X)  &none           &none             &none      &none      &dblclk            &none               &none      &none
 &none  &none  &none      &mo 5      &kp ENTER       &to 0             &mo 7      &to 0                                             &tog 4
             >;
@@ -223,13 +213,5 @@
             >;
         };
 
-        win_snap {
-            bindings = <
-&trans  &trans  &trans  &trans  &trans                    &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans      &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans      &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans      &trans  &trans                          &trans
-            >;
-        };
     };
 };
