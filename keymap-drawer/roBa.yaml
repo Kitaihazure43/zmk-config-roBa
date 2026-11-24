@@ -410,3 +410,6 @@ combos:
   l: [default]
 - p: [41, 18]
   k: Sft+-
+- p: [23, 24]
+  k: Ctl+Z
+  l: [default]

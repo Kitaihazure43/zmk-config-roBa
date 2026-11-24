@@ -48,6 +48,16 @@
             bindings = <&kp JP_EQUAL>;
             key-positions = <41 18>;
         };
+
+        /* Default layer: L (position 23) + C (position 24) = Ctrl+Z.
+         * Highest active layer must be 0, so number layers do not steal this chord.
+         */
+        ctrl_z {
+            bindings = <&kp LC(Z)>;
+            key-positions = <23 24>;
+            layers = <0>;
+            timeout-ms = <50>;
+        };
     };
 
     macros {
@@ -104,6 +114,19 @@
             bindings = <&mo 7>, <&kp RCTRL>;
         };
 
+        /* Hold commits to Shift once another key is down, even if this key is released first.
+         * The global &mt stays balanced, so Space and the numpad 0 keep their old timing.
+         */
+        shift_enter: shift_enter {
+            compatible = "zmk,behavior-hold-tap";
+            label = "SHIFT_ENTER";
+            bindings = <&kp>, <&kp>;
+            #binding-cells = <2>;
+            flavor = "hold-preferred";
+            tapping-term-ms = <200>;
+            quick-tap-ms = <0>;
+        };
+
     };
 
     keymap {
@@ -114,7 +137,7 @@
 &kp Q    &kp J         &kp U         &kp COMMA                    &kp PERIOD                                                            &kp F        &kp W  &kp R  &kp Y  &kp P
 &kp E    &kp I         &kp A         &kp O                        &kp MINUS             &screenshot                      &p           &kp K        &kp T  &kp N  &kp S  &kp H
 &kp X    &kp L         &kp C         &kp V                        &kp SLASH             &kp JP_COLON                     &kp SEMICOLON &kp G       &kp D  &kp M  &kp Z  &kp B
-&kp ESC  &kp LEFT_WIN  &kp LEFT_ALT  &lt_to_layer_0 5 INT_HENKAN  &mt LEFT_SHIFT ENTER  &lt_to_layer_0 6 LEFT_SHIFT      &Rctl        &mt RIGHT_SHIFT SPACE                 &tog 4
+&kp ESC  &kp LEFT_WIN  &kp LEFT_ALT  &lt_to_layer_0 5 INT_HENKAN  &shift_enter LEFT_SHIFT ENTER  &lt_to_layer_0 6 LEFT_SHIFT      &Rctl        &mt RIGHT_SHIFT SPACE                 &tog 4
             >;
 
             /* Left encoder: clockwise zooms in, the other way zooms out.
