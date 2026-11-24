@@ -128,7 +128,11 @@
 &kp ESC  &kp LEFT_WIN  &kp LEFT_ALT  &lt_to_layer_0 5 INT_HENKAN  &mt LEFT_SHIFT ENTER  &lt_to_layer_0 6 LEFT_SHIFT      &Rctl        &mt RIGHT_SHIFT SPACE                 &tog 4
             >;
 
-            sensor-bindings = <&inc_dec_kp PG_UP PAGE_DOWN>;
+            /* Left encoder: clockwise zooms in, the other way zooms out.
+             * On a JIS layout the ;+ key is VK_OEM_PLUS, so Ctrl+; is Ctrl+Plus.
+             * Ctrl+- is the same minus key. Swap the two codes if the direction is reversed.
+             */
+            sensor-bindings = <&inc_dec_kp LC(JP_SEMI) LC(JP_MINUS)>;
         };
 
         FUNCTION {
