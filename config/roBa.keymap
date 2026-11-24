@@ -115,12 +115,6 @@
             quick-tap-ms = <0>;
             bindings = <&mo>, <&mkp>;
         };
-
-        ml_tog: ml_tog {
-            compatible = "zmk,behavior-mouse-layer-toggle";
-            label = "MOUSE_LAYER_TOGGLE";
-            #binding-cells = <1>;
-        };
     };
 
     keymap {
@@ -131,7 +125,7 @@
 &kp Q    &kp J         &kp U         &kp COMMA                    &kp PERIOD                                                            &kp F        &kp W  &kp R  &kp Y  &kp P
 &kp E    &kp I         &kp A         &kp O                        &kp MINUS             &screenshot                      &p           &kp K        &kp T  &kp N  &kp S  &kp H
 &kp X    &kp L         &kp C         &kp V                        &kp SLASH             &kp JP_COLON                     &kp SEMICOLON &kp G       &kp D  &kp M  &kp Z  &kp B
-&kp ESC  &kp LEFT_WIN  &kp LEFT_ALT  &lt_to_layer_0 5 INT_HENKAN  &mt LEFT_SHIFT ENTER  &lt_to_layer_0 6 LEFT_SHIFT      &Rctl        &mt RIGHT_SHIFT SPACE                 &ml_tog 4
+&kp ESC  &kp LEFT_WIN  &kp LEFT_ALT  &lt_to_layer_0 5 INT_HENKAN  &mt LEFT_SHIFT ENTER  &lt_to_layer_0 6 LEFT_SHIFT      &Rctl        &mt RIGHT_SHIFT SPACE                 &tog 4
             >;
 
             sensor-bindings = <&inc_dec_kp PG_UP PAGE_DOWN>;
@@ -166,17 +160,17 @@
             sensor-bindings = <&inc_dec_kp LC(PAGE_UP) LC(PAGE_DOWN)>;
         };
 
-        /* Right home row: MB4, left click, middle (hold = window snap), right click.
+        /* Right home row: back, left click, middle (hold = window snap), right click.
          * Double-click is directly under left click.
-         * Hold the 変換 thumb (&mo 5) to scroll. Enter is the same thumb as the base layer.
-         * Right-edge thumb toggles this layer and keeps it until pressed again.
+         * Hold the 変換 thumb to scroll. Enter is the enter thumb.
+         * The right-edge key toggles this layer.
          */
         MOUSE {
             bindings = <
 &none  &none  &kp LC(F)  &kp LC(C)  &kp LC(X)                         &none      &none      &none              &none     &none
 &none  &none  &kp LC(A)  &kp LC(V)  &none           &screenshot       &none      &mkp MB4   &mkp LCLK          &mclk_snap 10 MCLK  &mkp RCLK  &to 0
 &none  &none  &none      &kp LC(X)  &none           &none             &none      &none      &dblclk            &none               &none      &none
-&none  &none  &none      &mo 5      &kp ENTER       &to 0             &mo 7      &to 0                                             &ml_tog 4
+&none  &none  &none      &mo 5      &kp ENTER       &to 0             &mo 7      &to 0                                             &tog 4
             >;
         };
 

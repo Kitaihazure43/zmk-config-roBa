@@ -311,9 +311,9 @@ path.combo {
 </g>
 <g transform="translate(700, 217)" class="key keypos-42">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
-<text x="0" y="0" class="key tap">
-<tspan x="0" dy="-0.6em">&amp;ml_tog</tspan><tspan x="0" dy="1.2em">4</tspan>
-</text>
+<a href="#MOUSE">
+<text x="0" y="0" class="key tap layer-activator">MOUSE</text>
+</a><text x="0" y="24" class="key hold">toggle</text>
 </g>
 <g class="combo combopos-0">
 <rect rx="6" ry="6" x="546" y="74" width="28" height="26" class="combo"/>
@@ -1055,9 +1055,9 @@ path.combo {
 </g>
 <g transform="translate(700, 217)" class="key keypos-42">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
-<text x="0" y="0" class="key tap">
-<tspan x="0" dy="-0.6em">&amp;ml_tog</tspan><tspan x="0" dy="1.2em">4</tspan>
-</text>
+<a href="#MOUSE">
+<text x="0" y="0" class="key tap layer-activator">MOUSE</text>
+</a><text x="0" y="24" class="key hold">toggle</text>
 </g>
 <g class="combo combopos-0">
 <rect rx="6" ry="6" x="479" y="105" width="28" height="26" class="combo"/>
