@@ -24,6 +24,11 @@
 
 LOG_MODULE_DECLARE(zmk, CONFIG_ZMK_LOG_LEVEL);
 
+/* The left half is a split peripheral and does not link keymap or layer events.
+ * The toggle key and the trackball both live on the central (right) half.
+ */
+#if !IS_ENABLED(CONFIG_ZMK_SPLIT) || IS_ENABLED(CONFIG_ZMK_SPLIT_ROLE_CENTRAL)
+
 static bool mouse_layer_sticky;
 static uint8_t mouse_layer_id = UINT8_MAX;
 
@@ -48,14 +53,9 @@ static int roba_mouse_layer_listener(const zmk_event_t *eh) {
 ZMK_LISTENER(roba_mouse_layer, roba_mouse_layer_listener);
 ZMK_SUBSCRIPTION(roba_mouse_layer, zmk_layer_state_changed);
 
-#if DT_HAS_COMPAT_STATUS_OKAY(DT_DRV_COMPAT)
-
-static int ml_tog_pressed(struct zmk_behavior_binding *binding,
-                          struct zmk_behavior_binding_event event) {
+static int ml_tog_apply(struct zmk_behavior_binding *binding) {
     const uint8_t layer = binding->param1;
     const bool active = zmk_keymap_layer_active(layer);
-
-    ARG_UNUSED(event);
 
     if (!active) {
         pmw3610_mouse_layer_note(layer, true);
@@ -69,6 +69,30 @@ static int ml_tog_pressed(struct zmk_behavior_binding *binding,
 
     pmw3610_mouse_layer_note(layer, false);
     return zmk_keymap_layer_deactivate(layer);
+}
+
+#else
+
+bool pmw3610_mouse_layer_sticky(void) { return false; }
+
+void pmw3610_mouse_layer_note(uint8_t layer, bool sticky) {
+    ARG_UNUSED(layer);
+    ARG_UNUSED(sticky);
+}
+
+static int ml_tog_apply(struct zmk_behavior_binding *binding) {
+    ARG_UNUSED(binding);
+    return 0;
+}
+
+#endif
+
+#if DT_HAS_COMPAT_STATUS_OKAY(DT_DRV_COMPAT)
+
+static int ml_tog_pressed(struct zmk_behavior_binding *binding,
+                          struct zmk_behavior_binding_event event) {
+    ARG_UNUSED(event);
+    return ml_tog_apply(binding);
 }
 
 static int ml_tog_released(struct zmk_behavior_binding *binding,
