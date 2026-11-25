@@ -26,10 +26,21 @@
     combos {
         compatible = "zmk,combos";
 
+        /* T+N (positions 18 and 19) on every layer except MOUSE.
+         * MOUSE uses bs_mouse: Backspace, then &to 0.
+         * Position 18 is also in iko-ru (41+18). Those chords differ, so both stay.
+         * L+C (23+24, Ctrl+Z) does not share these positions.
+         */
         bs {
             bindings = <&kp BACKSPACE>;
             key-positions = <18 19>;
-            layers = <0>;
+            layers = <0 1 2 3 5 6 7 8 9>;
+        };
+
+        bs_mouse {
+            bindings = <&bs_to_0>;
+            key-positions = <18 19>;
+            layers = <4>;
         };
 
         tab {
@@ -48,9 +59,20 @@
             bindings = <&kp JP_EQUAL>;
             key-positions = <41 18>;
         };
+
+        /* Default layer: L (position 23) + C (position 24) = Ctrl+Z.
+         * Highest active layer must be 0, so number layers do not steal this chord.
+         */
+        ctrl_z {
+            bindings = <&kp LC(Z)>;
+            key-positions = <23 24>;
+            layers = <0>;
+            timeout-ms = <50>;
+        };
     };
 
     macros {
+        /* Tap: &to 0, then the key from layer 0 at this position. */
         to_layer_0: to_layer_0 {
             compatible = "zmk,behavior-macro-one-param";
             #binding-cells = <1>;
@@ -58,11 +80,27 @@
             label = "TO_LAYER_0";
         };
 
+        /* MOUSE T+N combo: Backspace, then only layer 0. */
+        bs_to_0: bs_to_0 {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp BSPC &to 0>;
+            label = "BS_TO_0";
+        };
+
         p: password {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings = <&none &kp N1 &kp Q &kp A &kp Z &kp N2 &kp W &kp S &kp X &kp LS(MINUS) &kp LS(LBKT) &kp LS(SQT) &kp LS(INT1)>;
             label = "PASSWORD";
+        };
+
+        /* Layer 0's binding here is the password macro, not &kp. */
+        to_layer_0_p: to_layer_0_p {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&to 0 &p>;
+            label = "TO_LAYER_0_P";
         };
 
         /* Win+Shift+S. Release S before the modifiers so the Start menu does not open. */
@@ -104,17 +142,33 @@
             bindings = <&mo 7>, <&kp RCTRL>;
         };
 
+        /* Hold commits to Shift once another key is down, even if this key is released first.
+         * The global &mt stays balanced, so Space and the numpad 0 keep their old timing.
+         */
+        shift_enter: shift_enter {
+            compatible = "zmk,behavior-hold-tap";
+            label = "SHIFT_ENTER";
+            bindings = <&kp>, <&kp>;
+            #binding-cells = <2>;
+            flavor = "hold-preferred";
+            tapping-term-ms = <200>;
+            quick-tap-ms = <0>;
+        };
+
     };
 
     keymap {
         compatible = "zmk,keymap";
 
+        /* Position 27, directly under screenshot, holds the BT layer (layer 5).
+         * It was the JIS colon, JP_COLON. Layer 5 keeps this key transparent.
+         */
         default_layer {
             bindings = <
 &kp Q    &kp J         &kp U         &kp COMMA                    &kp PERIOD                                                            &kp F        &kp W  &kp R  &kp Y  &kp P
 &kp E    &kp I         &kp A         &kp O                        &kp MINUS             &screenshot                      &p           &kp K        &kp T  &kp N  &kp S  &kp H
-&kp X    &kp L         &kp C         &kp V                        &kp SLASH             &kp JP_COLON                     &kp SEMICOLON &kp G       &kp D  &kp M  &kp Z  &kp B
-&kp ESC  &kp LEFT_WIN  &kp LEFT_ALT  &lt_to_layer_0 5 INT_HENKAN  &mt LEFT_SHIFT ENTER  &lt_to_layer_0 6 LEFT_SHIFT      &Rctl        &mt RIGHT_SHIFT SPACE                 &tog 4
+&kp X    &kp L         &kp C         &kp V                        &kp SLASH             &mo 5                            &kp SEMICOLON &kp G       &kp D  &kp M  &kp Z  &kp B
+&kp ESC  &kp LEFT_WIN  &kp LEFT_ALT  &lt_to_layer_0 5 INT_HENKAN  &shift_enter LEFT_SHIFT ENTER  &lt_to_layer_0 6 LEFT_SHIFT      &Rctl        &mt RIGHT_SHIFT SPACE                 &tog 4
             >;
 
             /* Left encoder: clockwise zooms in, the other way zooms out.
@@ -154,17 +208,22 @@
         };
 
         /* Right home row: back, left click, middle click (held while the key is down), right click.
-         * Copy and paste are swapped: the comma key is paste, the O key is copy.
+         * Paste stays on the comma key. Cut and copy are swapped: both cut keys
+         * (period and V) are copy, and the O key is cut.
          * Double-click is directly under left click.
          * Hold the 変換 thumb to scroll. Enter is the enter thumb.
          * The right-edge key toggles this layer.
+         * Keys that were blank use &to 0 (only layer 0 stays on), then tap the
+         * layer-0 key in that position. Keys that already do something are unchanged.
+         * The password position runs &p after &to 0.
+         * Position 27 matches layer 0: hold for the BT layer (&mo 5).
          */
         MOUSE {
             bindings = <
-&none  &none  &kp LC(F)  &kp LC(V)  &kp LC(X)                         &none      &none      &none              &none     &none
-&none  &none  &kp LC(A)  &kp LC(C)  &none           &screenshot       &none      &mkp MB4   &mkp LCLK          &mkp MCLK  &mkp RCLK  &to 0
-&none  &none  &none      &kp LC(X)  &none           &none             &none      &none      &dblclk            &none               &none      &none
-&none  &none  &none      &mo 5      &kp ENTER       &to 0             &mo 7      &to 0                                             &tog 4
+&to_layer_0 Q    &to_layer_0 J  &kp LC(F)       &kp LC(V)      &kp LC(C)                                                              &to_layer_0 F          &to_layer_0 W  &to_layer_0 R  &to_layer_0 Y  &to_layer_0 P
+&to_layer_0 E    &to_layer_0 I  &kp LC(A)       &kp LC(X)      &to_layer_0 MINUS     &screenshot                    &to_layer_0_p          &mkp MB4           &mkp LCLK      &mkp MCLK      &mkp RCLK      &to 0
+&to_layer_0 X    &to_layer_0 L  &to_layer_0 C   &kp LC(C)      &to_layer_0 SLASH     &mo 5                          &to_layer_0 SEMICOLON  &to_layer_0 G      &dblclk        &to_layer_0 M  &to_layer_0 Z  &to_layer_0 B
+&to_layer_0 ESC  &to_layer_0 LEFT_WIN  &to_layer_0 LEFT_ALT  &mo 5  &kp ENTER  &to 0             &mo 7      &to 0                                             &tog 4
             >;
         };
 
@@ -177,10 +236,13 @@
             >;
         };
 
+        /* Position 19 is directly above this layer's `;` (JP_SEMI, position 31).
+         * It was `'` (JP_SQT). JP_COLON is the JIS colon.
+         */
         kigou {
             bindings = <
 &trans         &screenshot     &mo 9   &trans  &trans                      &kp JP_EQUAL  &kp JP_EXCL  &kp JP_HASH  &kp JP_QMARK  &trans
-&trans         &trans          &mo 9   &mo 8   &trans  &trans      &trans  &kp JP_TILDE  &kp JP_LBKT  &kp JP_SQT   &kp JP_BSLH   &trans
+&trans         &trans          &mo 9   &mo 8   &trans  &trans      &trans  &kp JP_TILDE  &kp JP_LBKT  &kp JP_COLON &kp JP_BSLH   &trans
 &trans         &trans          &trans  &mo 1   &trans  &trans      &trans  &trans        &kp JP_AMPS  &kp JP_SEMI  &kp JP_UNDER  &trans
 &kp LS(LG(G))  &kp LG(PERIOD)  &trans  &trans  &trans  &trans      &trans  &kp SPACE                                         &trans
             >;
@@ -197,9 +259,9 @@
 
         NUM-2 {
             bindings = <
-&none  &none  &none  &none  &none                    &none         &kp KP_N1  &kp KP_N2  &kp KP_N3  &kp JP_COLON
-&none  &none  &none  &none  &none  &none      &none  &kp JP_MINUS  &kp KP_N4  &kp KP_N5  &kp KP_N6  &kp JP_DQT
-&none  &none  &none  &none  &none  &none      &none  &none         &kp KP_N7  &kp KP_N8  &kp KP_N9  &kp JP_FSLH
+&none  &none  &none  &none  &none                    &none         &kp KP_N1  &kp KP_N2  &kp KP_N3  &kp KP_PLUS
+&none  &none  &none  &none  &none  &none      &kp KP_NUM  &kp JP_MINUS  &kp KP_N4  &kp KP_N5  &kp KP_N6  &kp KP_MULTIPLY
+&none  &none  &none  &none  &none  &none      &none  &none         &kp KP_N7  &kp KP_N8  &kp KP_N9  &kp KP_DIVIDE
 &none  &none  &none  &none  &none  &none      &none  &kp KP_N0                                &none
             >;
         };

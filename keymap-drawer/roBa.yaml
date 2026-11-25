@@ -1,4 +1,4 @@
-layout: {zmk_keyboard: roBa}
+layout: {qmk_info_json: keymap-drawer/roBa-layout.json}
 layers:
   default:
   - Q
@@ -28,7 +28,7 @@ layers:
   - C
   - V
   - /
-  - ''''
+  - '6'
   - ;
   - G
   - D
@@ -38,7 +38,7 @@ layers:
   - ESC
   - LEFT WIN
   - LEFT ALT
-  - {t: '&to_layer_0 INT_HENKAN', h: '6'}
+  - {t: 変換, h: '6'}
   - {t: ENTER, h: LEFT SHIFT}
   - {t: '&to_layer_0 LEFT_SHIFT', h: kigou}
   - '&Rctl'
@@ -51,36 +51,36 @@ layers:
   - KP 7
   - KP 8
   - KP 9
-  - Sft+;
-  - '='
-  - Sft+6
-  - Sft+=
-  - Sft+8
-  - Sft+9
+  - +
+  - ^
+  - '&'
+  - '~'
+  - (
+  - )
   - /
   - KP 4
   - KP 5
   - KP 6
-  - Sft+'
+  - '*'
   - Ctl+Alt+KP 0
-  - Sft+INT1
-  - Sft+1
-  - '['
-  - Sft+3
-  - Sft+4
-  - Sft+5
+  - _
+  - '!'
+  - '@'
+  - '#'
+  - $
+  - '%'
   - {t: KP 0, h: LEFT SHIFT}
   - KP 1
   - KP 2
   - KP 3
   - .
-  - Sft+-
+  - '='
   - {t: ▽, type: trans}
+  - '['
   - ']'
+  - '{'
+  - '}'
   - \
-  - Sft+]
-  - Sft+\
-  - INT1
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
@@ -89,7 +89,7 @@ layers:
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
-  - Sft+INT3
+  - '|'
   ARROW:
   - ESCAPE
   - Ctl+Sft+TAB
@@ -135,43 +135,43 @@ layers:
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   MOUSE:
-  - ''
-  - ''
+  - '&to_layer_0 Q'
+  - '&to_layer_0 J'
   - Ctl+F
   - Ctl+V
-  - Ctl+X
-  - ''
-  - ''
-  - ''
-  - ''
-  - ''
-  - ''
-  - ''
-  - Ctl+A
   - Ctl+C
-  - ''
+  - '&to_layer_0 F'
+  - '&to_layer_0 W'
+  - '&to_layer_0 R'
+  - '&to_layer_0 Y'
+  - '&to_layer_0 P'
+  - '&to_layer_0 E'
+  - '&to_layer_0 I'
+  - Ctl+A
+  - Ctl+X
+  - {t: '-', h: to 0}
   - '&screenshot'
-  - ''
+  - '&to_layer_0_p'
   - '&mkp MB4'
   - '&mkp LCLK'
   - '&mkp MCLK'
   - '&mkp RCLK'
   - {t: default, h: toggle}
-  - ''
-  - ''
-  - ''
-  - Ctl+X
-  - ''
-  - ''
-  - ''
-  - ''
+  - '&to_layer_0 X'
+  - '&to_layer_0 L'
+  - '&to_layer_0 C'
+  - Ctl+C
+  - {t: /, h: to 0}
+  - '6'
+  - {t: ;, h: to 0}
+  - '&to_layer_0 G'
   - '&dblclk'
-  - ''
-  - ''
-  - ''
-  - ''
-  - ''
-  - ''
+  - '&to_layer_0 M'
+  - '&to_layer_0 Z'
+  - '&to_layer_0 B'
+  - '&to_layer_0 ESC'
+  - '&to_layer_0 LEFT_WIN'
+  - '&to_layer_0 LEFT_ALT'
   - '6'
   - ENTER
   - {t: default, h: toggle}
@@ -206,7 +206,7 @@ layers:
   - KP 2
   - KP 3
   - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
+  - {type: held}
   - '&bootloader'
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
@@ -216,7 +216,7 @@ layers:
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
-  - {type: held}
+  - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
@@ -228,10 +228,10 @@ layers:
   - kakko
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
-  - Sft+-
-  - Sft+1
-  - Sft+3
-  - Sft+/
+  - '='
+  - '!'
+  - '#'
+  - '?'
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
@@ -240,10 +240,10 @@ layers:
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
-  - Sft+=
-  - ']'
-  - Sft+7
-  - INT1
+  - '~'
+  - '['
+  - ':'
+  - \
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
@@ -253,9 +253,9 @@ layers:
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
-  - Sft+6
+  - '&'
   - ;
-  - Sft+INT1
+  - _
   - {t: ▽, type: trans}
   - Sft+Gui+G
   - Gui+.
@@ -267,7 +267,7 @@ layers:
   - SPACE
   - {t: ▽, type: trans}
   '7':
-  - Sft+;
+  - +
   - KP 1
   - KP 2
   - KP 3
@@ -277,7 +277,7 @@ layers:
   - UP ARROW
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
-  - Sft+'
+  - '*'
   - KP 4
   - KP 5
   - KP 6
@@ -293,7 +293,7 @@ layers:
   - KP 7
   - KP 8
   - KP 9
-  - Sft+-
+  - '='
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
@@ -320,19 +320,19 @@ layers:
   - KP 1
   - KP 2
   - KP 3
-  - ''''
+  - KP PLUS
   - ''
   - ''
   - ''
   - {type: held}
   - ''
   - ''
-  - ''
+  - KP NUM
   - '-'
   - KP 4
   - KP 5
   - KP 6
-  - Sft+2
+  - KP MULTIPLY
   - ''
   - ''
   - ''
@@ -344,7 +344,7 @@ layers:
   - KP 7
   - KP 8
   - KP 9
-  - /
+  - KP DIVIDE
   - ''
   - ''
   - ''
@@ -361,9 +361,9 @@ layers:
   - ''
   - ''
   - ''
-  - Sft+8
-  - Sft+7
-  - Sft+9
+  - (
+  - ''''
+  - )
   - ''
   - ''
   - ''
@@ -373,9 +373,9 @@ layers:
   - ''
   - ''
   - ''
+  - '['
+  - '"'
   - ']'
-  - Sft+2
-  - \
   - ''
   - ''
   - ''
@@ -385,9 +385,9 @@ layers:
   - ''
   - ''
   - ''
-  - Sft+]
-  - Sft+[
-  - Sft+\
+  - '{'
+  - '`'
+  - '}'
   - ''
   - ''
   - ''
@@ -401,7 +401,10 @@ layers:
 combos:
 - p: [18, 19]
   k: BACKSPACE
-  l: [default]
+  l: [default, FUNCTION, NUM, ARROW, '6', kigou, '7', NUM-2, kakko]
+- p: [18, 19]
+  k: '&bs_to_0'
+  l: [MOUSE]
 - p: [30, 31]
   k: TAB
   l: [default]
@@ -409,4 +412,7 @@ combos:
   k: Alt+`
   l: [default]
 - p: [41, 18]
-  k: Sft+-
+  k: '='
+- p: [23, 24]
+  k: Ctl+Z
+  l: [default]
