@@ -160,11 +160,14 @@
     keymap {
         compatible = "zmk,keymap";
 
+        /* Position 27, directly under screenshot, holds the BT layer (layer 5).
+         * It was the JIS colon, JP_COLON. Layer 5 keeps this key transparent.
+         */
         default_layer {
             bindings = <
 &kp Q    &kp J         &kp U         &kp COMMA                    &kp PERIOD                                                            &kp F        &kp W  &kp R  &kp Y  &kp P
 &kp E    &kp I         &kp A         &kp O                        &kp MINUS             &screenshot                      &p           &kp K        &kp T  &kp N  &kp S  &kp H
-&kp X    &kp L         &kp C         &kp V                        &kp SLASH             &kp JP_COLON                     &kp SEMICOLON &kp G       &kp D  &kp M  &kp Z  &kp B
+&kp X    &kp L         &kp C         &kp V                        &kp SLASH             &mo 5                            &kp SEMICOLON &kp G       &kp D  &kp M  &kp Z  &kp B
 &kp ESC  &kp LEFT_WIN  &kp LEFT_ALT  &lt_to_layer_0 5 INT_HENKAN  &shift_enter LEFT_SHIFT ENTER  &lt_to_layer_0 6 LEFT_SHIFT      &Rctl        &mt RIGHT_SHIFT SPACE                 &tog 4
             >;
 
@@ -213,12 +216,13 @@
          * Keys that were blank use &to 0 (only layer 0 stays on), then tap the
          * layer-0 key in that position. Keys that already do something are unchanged.
          * The password position runs &p after &to 0.
+         * Position 27 matches layer 0: hold for the BT layer (&mo 5).
          */
         MOUSE {
             bindings = <
 &to_layer_0 Q    &to_layer_0 J  &kp LC(F)       &kp LC(V)      &kp LC(C)                                                              &to_layer_0 F          &to_layer_0 W  &to_layer_0 R  &to_layer_0 Y  &to_layer_0 P
 &to_layer_0 E    &to_layer_0 I  &kp LC(A)       &kp LC(X)      &to_layer_0 MINUS     &screenshot                    &to_layer_0_p          &mkp MB4           &mkp LCLK      &mkp MCLK      &mkp RCLK      &to 0
-&to_layer_0 X    &to_layer_0 L  &to_layer_0 C   &kp LC(C)      &to_layer_0 SLASH     &to_layer_0 JP_COLON           &to_layer_0 SEMICOLON  &to_layer_0 G      &dblclk        &to_layer_0 M  &to_layer_0 Z  &to_layer_0 B
+&to_layer_0 X    &to_layer_0 L  &to_layer_0 C   &kp LC(C)      &to_layer_0 SLASH     &mo 5                          &to_layer_0 SEMICOLON  &to_layer_0 G      &dblclk        &to_layer_0 M  &to_layer_0 Z  &to_layer_0 B
 &to_layer_0 ESC  &to_layer_0 LEFT_WIN  &to_layer_0 LEFT_ALT  &mo 5  &kp ENTER  &to 0             &mo 7      &to 0                                             &tog 4
             >;
         };

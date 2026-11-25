@@ -28,7 +28,7 @@ layers:
   - C
   - V
   - /
-  - ''''
+  - '6'
   - ;
   - G
   - D
@@ -162,7 +162,7 @@ layers:
   - '&to_layer_0 C'
   - Ctl+C
   - '&to_layer_0 SLASH'
-  - '&to_layer_0 SQT'
+  - '6'
   - '&to_layer_0 SEMICOLON'
   - '&to_layer_0 G'
   - '&dblclk'
@@ -206,7 +206,7 @@ layers:
   - KP 2
   - KP 3
   - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
+  - {type: held}
   - '&bootloader'
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
@@ -216,7 +216,7 @@ layers:
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
-  - {type: held}
+  - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
