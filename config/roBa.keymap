@@ -26,10 +26,21 @@
     combos {
         compatible = "zmk,combos";
 
+        /* T+N (positions 18 and 19) on every layer except MOUSE.
+         * MOUSE uses bs_mouse: Backspace, then &to 0.
+         * Position 18 is also in iko-ru (41+18). Those chords differ, so both stay.
+         * L+C (23+24, Ctrl+Z) does not share these positions.
+         */
         bs {
             bindings = <&kp BACKSPACE>;
             key-positions = <18 19>;
-            layers = <0>;
+            layers = <0 1 2 3 5 6 7 8 9>;
+        };
+
+        bs_mouse {
+            bindings = <&bs_to_0>;
+            key-positions = <18 19>;
+            layers = <4>;
         };
 
         tab {
@@ -61,6 +72,7 @@
     };
 
     macros {
+        /* Tap: &to 0, then the key from layer 0 at this position. */
         to_layer_0: to_layer_0 {
             compatible = "zmk,behavior-macro-one-param";
             #binding-cells = <1>;
@@ -68,11 +80,27 @@
             label = "TO_LAYER_0";
         };
 
+        /* MOUSE T+N combo: Backspace, then only layer 0. */
+        bs_to_0: bs_to_0 {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp BSPC &to 0>;
+            label = "BS_TO_0";
+        };
+
         p: password {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings = <&none &kp N1 &kp Q &kp A &kp Z &kp N2 &kp W &kp S &kp X &kp LS(MINUS) &kp LS(LBKT) &kp LS(SQT) &kp LS(INT1)>;
             label = "PASSWORD";
+        };
+
+        /* Layer 0's binding here is the password macro, not &kp. */
+        to_layer_0_p: to_layer_0_p {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&to 0 &p>;
+            label = "TO_LAYER_0_P";
         };
 
         /* Win+Shift+S. Release S before the modifiers so the Start menu does not open. */
@@ -182,13 +210,16 @@
          * Double-click is directly under left click.
          * Hold the 変換 thumb to scroll. Enter is the enter thumb.
          * The right-edge key toggles this layer.
+         * Keys that were blank use &to 0 (only layer 0 stays on), then tap the
+         * layer-0 key in that position. Keys that already do something are unchanged.
+         * The password position runs &p after &to 0.
          */
         MOUSE {
             bindings = <
-&none  &none  &kp LC(F)  &kp LC(V)  &kp LC(C)                         &none      &none      &none              &none     &none
-&none  &none  &kp LC(A)  &kp LC(X)  &none           &screenshot       &none      &mkp MB4   &mkp LCLK          &mkp MCLK  &mkp RCLK  &to 0
-&none  &none  &none      &kp LC(C)  &none           &none             &none      &none      &dblclk            &none               &none      &none
-&none  &none  &none      &mo 5      &kp ENTER       &to 0             &mo 7      &to 0                                             &tog 4
+&to_layer_0 Q    &to_layer_0 J  &kp LC(F)       &kp LC(V)      &kp LC(C)                                                              &to_layer_0 F          &to_layer_0 W  &to_layer_0 R  &to_layer_0 Y  &to_layer_0 P
+&to_layer_0 E    &to_layer_0 I  &kp LC(A)       &kp LC(X)      &to_layer_0 MINUS     &screenshot                    &to_layer_0_p          &mkp MB4           &mkp LCLK      &mkp MCLK      &mkp RCLK      &to 0
+&to_layer_0 X    &to_layer_0 L  &to_layer_0 C   &kp LC(C)      &to_layer_0 SLASH     &to_layer_0 JP_COLON           &to_layer_0 SEMICOLON  &to_layer_0 G      &dblclk        &to_layer_0 M  &to_layer_0 Z  &to_layer_0 B
+&to_layer_0 ESC  &to_layer_0 LEFT_WIN  &to_layer_0 LEFT_ALT  &mo 5  &kp ENTER  &to 0             &mo 7      &to 0                                             &tog 4
             >;
         };
 
@@ -201,10 +232,13 @@
             >;
         };
 
+        /* Position 19 is directly above this layer's `;` (JP_SEMI, position 31).
+         * It was `'` (JP_SQT). JP_COLON is the JIS colon.
+         */
         kigou {
             bindings = <
 &trans         &screenshot     &mo 9   &trans  &trans                      &kp JP_EQUAL  &kp JP_EXCL  &kp JP_HASH  &kp JP_QMARK  &trans
-&trans         &trans          &mo 9   &mo 8   &trans  &trans      &trans  &kp JP_TILDE  &kp JP_LBKT  &kp JP_SQT   &kp JP_BSLH   &trans
+&trans         &trans          &mo 9   &mo 8   &trans  &trans      &trans  &kp JP_TILDE  &kp JP_LBKT  &kp JP_COLON &kp JP_BSLH   &trans
 &trans         &trans          &trans  &mo 1   &trans  &trans      &trans  &trans        &kp JP_AMPS  &kp JP_SEMI  &kp JP_UNDER  &trans
 &kp LS(LG(G))  &kp LG(PERIOD)  &trans  &trans  &trans  &trans      &trans  &kp SPACE                                         &trans
             >;

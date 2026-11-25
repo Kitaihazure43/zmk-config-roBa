@@ -135,43 +135,43 @@ layers:
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   MOUSE:
-  - ''
-  - ''
+  - '&to_layer_0 Q'
+  - '&to_layer_0 J'
   - Ctl+F
   - Ctl+V
   - Ctl+C
-  - ''
-  - ''
-  - ''
-  - ''
-  - ''
-  - ''
-  - ''
+  - '&to_layer_0 F'
+  - '&to_layer_0 W'
+  - '&to_layer_0 R'
+  - '&to_layer_0 Y'
+  - '&to_layer_0 P'
+  - '&to_layer_0 E'
+  - '&to_layer_0 I'
   - Ctl+A
   - Ctl+X
-  - ''
+  - '&to_layer_0 MINUS'
   - '&screenshot'
-  - ''
+  - '&to_layer_0_p'
   - '&mkp MB4'
   - '&mkp LCLK'
   - '&mkp MCLK'
   - '&mkp RCLK'
   - {t: default, h: toggle}
-  - ''
-  - ''
-  - ''
+  - '&to_layer_0 X'
+  - '&to_layer_0 L'
+  - '&to_layer_0 C'
   - Ctl+C
-  - ''
-  - ''
-  - ''
-  - ''
+  - '&to_layer_0 SLASH'
+  - '&to_layer_0 SQT'
+  - '&to_layer_0 SEMICOLON'
+  - '&to_layer_0 G'
   - '&dblclk'
-  - ''
-  - ''
-  - ''
-  - ''
-  - ''
-  - ''
+  - '&to_layer_0 M'
+  - '&to_layer_0 Z'
+  - '&to_layer_0 B'
+  - '&to_layer_0 ESC'
+  - '&to_layer_0 LEFT_WIN'
+  - '&to_layer_0 LEFT_ALT'
   - '6'
   - ENTER
   - {t: default, h: toggle}
@@ -242,7 +242,7 @@ layers:
   - {t: ▽, type: trans}
   - Sft+=
   - ']'
-  - Sft+7
+  - ''''
   - INT1
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
@@ -401,7 +401,10 @@ layers:
 combos:
 - p: [18, 19]
   k: BACKSPACE
-  l: [default]
+  l: [default, FUNCTION, NUM, ARROW, '6', kigou, '7', NUM-2, kakko]
+- p: [18, 19]
+  k: '&bs_to_0'
+  l: [MOUSE]
 - p: [30, 31]
   k: TAB
   l: [default]
