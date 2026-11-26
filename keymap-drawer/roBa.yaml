@@ -138,7 +138,7 @@ layers:
   - '&to_layer_0 Q'
   - '&to_layer_0 J'
   - Ctl+F
-  - Ctl+V
+  - Ctl+X
   - Ctl+C
   - '&to_layer_0 F'
   - '&to_layer_0 W'
@@ -148,7 +148,7 @@ layers:
   - '&to_layer_0 E'
   - '&to_layer_0 I'
   - Ctl+A
-  - Ctl+X
+  - Ctl+C
   - {t: '-', h: to 0}
   - '&screenshot'
   - '&to_layer_0_p'
@@ -160,7 +160,7 @@ layers:
   - '&to_layer_0 X'
   - '&to_layer_0 L'
   - '&to_layer_0 C'
-  - Ctl+C
+  - Ctl+V
   - {t: /, h: to 0}
   - '6'
   - {t: ;, h: to 0}
