@@ -208,8 +208,9 @@
         };
 
         /* Right home row: back, left click, middle click (held while the key is down), right click.
-         * Paste stays on the comma key. Cut and copy are swapped: both cut keys
-         * (period and V) are copy, and the O key is cut.
+         * Left edit column (column 3: comma, O, V on layer 0), top to bottom:
+         * cut (Ctrl+X), copy (Ctrl+C), paste (Ctrl+V).
+         * The period key (column 4) stays copy. Ctrl+F and Ctrl+A stay.
          * Double-click is directly under left click.
          * Hold the 変換 thumb to scroll. Enter is the enter thumb.
          * The right-edge key toggles this layer.
@@ -220,9 +221,9 @@
          */
         MOUSE {
             bindings = <
-&to_layer_0 Q    &to_layer_0 J  &kp LC(F)       &kp LC(V)      &kp LC(C)                                                              &to_layer_0 F          &to_layer_0 W  &to_layer_0 R  &to_layer_0 Y  &to_layer_0 P
-&to_layer_0 E    &to_layer_0 I  &kp LC(A)       &kp LC(X)      &to_layer_0 MINUS     &screenshot                    &to_layer_0_p          &mkp MB4           &mkp LCLK      &mkp MCLK      &mkp RCLK      &to 0
-&to_layer_0 X    &to_layer_0 L  &to_layer_0 C   &kp LC(C)      &to_layer_0 SLASH     &mo 5                          &to_layer_0 SEMICOLON  &to_layer_0 G      &dblclk        &to_layer_0 M  &to_layer_0 Z  &to_layer_0 B
+&to_layer_0 Q    &to_layer_0 J  &kp LC(F)       &kp LC(X)      &kp LC(C)                                                              &to_layer_0 F          &to_layer_0 W  &to_layer_0 R  &to_layer_0 Y  &to_layer_0 P
+&to_layer_0 E    &to_layer_0 I  &kp LC(A)       &kp LC(C)      &to_layer_0 MINUS     &screenshot                    &to_layer_0_p          &mkp MB4           &mkp LCLK      &mkp MCLK      &mkp RCLK      &to 0
+&to_layer_0 X    &to_layer_0 L  &to_layer_0 C   &kp LC(V)      &to_layer_0 SLASH     &mo 5                          &to_layer_0 SEMICOLON  &to_layer_0 G      &dblclk        &to_layer_0 M  &to_layer_0 Z  &to_layer_0 B
 &to_layer_0 ESC  &to_layer_0 LEFT_WIN  &to_layer_0 LEFT_ALT  &mo 5  &kp ENTER  &to 0             &mo 7      &to 0                                             &tog 4
             >;
         };
